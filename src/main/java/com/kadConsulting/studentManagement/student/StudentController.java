@@ -3,6 +3,7 @@ package com.kadConsulting.studentManagement.student;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,14 +23,16 @@ import com.kadConsulting.studentManagement.excetpion.StudentNotExistException;
 public class StudentController {
 
 	private final StudentService studentService;
+	@Value("${author.name}")
+	private String authorName;
 
 	public StudentController(StudentService studentService) {
 		this.studentService = studentService;
 	}
 
-	@GetMapping(path = "/devToolTest")
+	@GetMapping(path = "/home")
 	public String devToolTest(){
-		return "it works :)";
+		return "it works " + authorName + " :)";
 	}
 
 	@GetMapping(path = "/student/{email}")

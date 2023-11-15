@@ -32,7 +32,7 @@ public class StudentController {
 		return "it works " + authorName + " :)";
 	}
 
-	@GetMapping(path = "/student/{email}")
+	@GetMapping(path = "/students/{email}")
 	public ResponseEntity<Student> getStudent(@PathVariable String email) {
 		return ResponseEntity.ok(studentService.getStudentByName(email).orElseGet(Student::new));
 	}
@@ -43,17 +43,17 @@ public class StudentController {
 	}
 
 
-	@PostMapping(path = "/registerStudent")
+	@PostMapping(path = "/students")
 	public void registerStudent(@RequestBody Student student) throws BadRequestException {
 		studentService.addNewStudent(student);
 	}
 
-	@DeleteMapping(path = "{studentId}")
+	@DeleteMapping(path = "/students/{studentId}")
 	public void deleteStudent(@PathVariable("studentId") Long studentId) throws StudentNotExistException {
 		studentService.deleteStudent(studentId);
 	}
 
-	@PutMapping(path = "{studentId}")
+	@PutMapping(path = "/students/{studentId}")
 	public void updateStudent(@PathVariable("studentId") Long studentId,
 							  @RequestParam(required = false) String name,
 							  @RequestParam(required = false) String email){

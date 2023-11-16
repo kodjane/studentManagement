@@ -6,19 +6,8 @@
 trigger:
 - master
 
-stages:
- - stage: checkoutCode
-   jobs:
-     - job: 'Checkoutgitcode'
-       steps:
-          - checkout: self
-          - task: Maven@4
-            inputs:
-              mavenPomFile: 'pom.xml'
-              goals: 'install'
-              publishJUnitResults: false
-              javaHomeOption: 'JDKVersion'
-              mavenVersionOption: 'Default'
-              mavenAuthenticateFeed: false
-              effectivePomSkip: false
-              sonarQubeRunAnalysis: false
+pool: ubuntu-latest
+
+steps:
+  - script: echo Hello, world
+    displayName: "Run a one line script"

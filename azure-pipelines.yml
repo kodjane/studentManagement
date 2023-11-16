@@ -3,12 +3,11 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
-trigger:
-- master
+pool:  
+  name: local 
 
-pool: 
-  vmImage: ubuntu-latest
+trigger: none 
 
-steps:
-  - script: echo Hello, world
-    displayName: "Run a one line script"
+steps: 
+- script: echo Hello, world! 
+  displayName: 'Run a one-line script

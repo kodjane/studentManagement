@@ -1,5 +1,5 @@
 pool:  
-  name: Azure pipelines 
+  name: Azure Pipelines 
 
 trigger: none 
 

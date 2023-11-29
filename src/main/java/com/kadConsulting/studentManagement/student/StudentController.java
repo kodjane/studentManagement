@@ -37,6 +37,16 @@ public class StudentController {
 		return ResponseEntity.ok(studentService.getStudentByName(email).orElseGet(Student::new));
 	}
 
+	@GetMapping(path = "/students/{id}")
+	public ResponseEntity<Student> getStudentById(@PathVariable Long id) throws StudentNotExistException {
+		Optional<Student> optionalStudent = studentService.getStudentById(id);
+
+		if (optionalStudent.isEmpty())
+			throw new StudentNotExistException("Student Not Found");
+
+		return ResponseEntity.ok(optionalStudent.get());
+	}
+
 	@GetMapping(path = "/students")
 	public ResponseEntity<List<Student>> getStudents(){
 		return ResponseEntity.ok(studentService.getStudents());

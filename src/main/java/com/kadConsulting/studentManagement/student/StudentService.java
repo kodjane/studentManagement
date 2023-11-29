@@ -57,4 +57,8 @@ public class StudentService {
 	public Optional<Student> getStudentByName(String email) {
 		return studentRepository.findStudentByEmail(email);
 	}
+
+	public Optional<Student> getStudentById(Long id) {
+		return Optional.of(studentRepository.getReferenceById(id));
+	}
 }

@@ -43,12 +43,12 @@ public class StudentService {
 		Student student = studentRepository.findById(studentId).
 				orElseThrow(() -> new IllegalArgumentException("student with id " + studentId + " does not exist"));
 
-		if (name != null && name.length() > 0 && !name.equals(student.getName())){
+		if (name != null && !name.isEmpty() && !name.equals(student.getName())){
 			student.setName(name);
 			studentRepository.save(student);
 		}
 
-		if (email != null && email.length() > 0 && !email.equals(student.getEmail())){
+		if (email != null && !email.isEmpty() && !email.equals(student.getEmail())){
 			student.setEmail(email);
 			studentRepository.save(student);
 		}
